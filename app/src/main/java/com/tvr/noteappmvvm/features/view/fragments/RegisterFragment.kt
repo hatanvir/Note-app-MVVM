@@ -22,8 +22,8 @@ import com.mobsandgeeks.saripaar.annotation.Email
 import com.mobsandgeeks.saripaar.annotation.NotEmpty
 import com.mobsandgeeks.saripaar.annotation.Password
 import com.tvr.noteappmvvm.R
-import com.tvr.noteappmvvm.features.model.AuthModel
-import com.tvr.noteappmvvm.features.model.AuthModelImplementation
+import com.tvr.noteappmvvm.features.model.Auth.AuthModel
+import com.tvr.noteappmvvm.features.model.Auth.AuthModelImplementation
 import com.tvr.noteappmvvm.features.model.Request.RegisterRequest
 import com.tvr.noteappmvvm.features.viewmodel.AuthViewModel
 
@@ -66,7 +66,9 @@ class RegisterFragment : Fragment(),Validator.ValidationListener {
         progressDialog.setTitle("Please wait")
 
         // initialize model. (I know we should not initialize model in View. But for simplicity...)
-        model = AuthModelImplementation(requireActivity())
+        model = AuthModelImplementation(
+            requireActivity()
+        )
         // initialize ViewModel
         viewModel = ViewModelProviders.of(requireActivity()).get(AuthViewModel::class.java)
 

@@ -1,4 +1,4 @@
-package com.tvr.noteappmvvm.features.model
+package com.tvr.noteappmvvm.features.model.Auth
 
 import com.tvr.noteappmvvm.common.RequestCompleteListener
 import com.tvr.noteappmvvm.features.model.Request.LoginRequest

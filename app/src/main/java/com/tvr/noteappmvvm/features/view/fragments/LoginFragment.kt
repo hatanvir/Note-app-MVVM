@@ -22,8 +22,8 @@ import com.mobsandgeeks.saripaar.Validator
 import com.mobsandgeeks.saripaar.annotation.NotEmpty
 
 import com.tvr.noteappmvvm.R
-import com.tvr.noteappmvvm.features.model.AuthModel
-import com.tvr.noteappmvvm.features.model.AuthModelImplementation
+import com.tvr.noteappmvvm.features.model.Auth.AuthModel
+import com.tvr.noteappmvvm.features.model.Auth.AuthModelImplementation
 import com.tvr.noteappmvvm.features.model.Request.LoginRequest
 import com.tvr.noteappmvvm.features.view.HomeActivity
 import com.tvr.noteappmvvm.features.viewmodel.AuthViewModel
@@ -39,7 +39,7 @@ class LoginFragment() : Fragment(),Validator.ValidationListener{
     @BindView(R.id.loginBt)
     lateinit var loginBt: Button
 
-    private lateinit var model:AuthModel
+    private lateinit var model: AuthModel
     private lateinit var viewModel:AuthViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,7 +53,9 @@ class LoginFragment() : Fragment(),Validator.ValidationListener{
         progressDialog.setTitle("Please wait")
 
         // initialize model. (I know we should not initialize model in View. But for simplicity...)
-        model = AuthModelImplementation(requireActivity())
+        model = AuthModelImplementation(
+            requireActivity()
+        )
         // initialize ViewModel
         viewModel = ViewModelProviders.of(requireActivity()).get(AuthViewModel::class.java)
 
@@ -96,6 +98,7 @@ class LoginFragment() : Fragment(),Validator.ValidationListener{
         viewModel.loginSuccessLiveData.observe(this, Observer { data->
             Toast.makeText(activity,data.token.email,Toast.LENGTH_SHORT).show()
             val hashSet:HashSet<String> = HashSet()
+            hashSet.add(data.token.id.toString())
             hashSet.add(data.token.name)
             hashSet.add(data.token.email)
             hashSet.add(data.token.createdAt)

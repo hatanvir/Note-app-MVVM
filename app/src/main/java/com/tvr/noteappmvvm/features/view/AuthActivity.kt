@@ -12,7 +12,7 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-
+        supportActionBar!!.hide()
         setfragment(RegisterFragment1())
 
         Toast.makeText(this,"here",Toast.LENGTH_SHORT).show()

@@ -1,10 +1,9 @@
 package com.tvr.noteappmvvm.features.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tvr.noteappmvvm.common.RequestCompleteListener
-import com.tvr.noteappmvvm.features.model.AuthModel
+import com.tvr.noteappmvvm.features.model.Auth.AuthModel
 import com.tvr.noteappmvvm.features.model.Request.LoginRequest
 import com.tvr.noteappmvvm.features.model.Request.RegisterRequest
 import com.tvr.noteappmvvm.features.model.Response.LoginRes.Login

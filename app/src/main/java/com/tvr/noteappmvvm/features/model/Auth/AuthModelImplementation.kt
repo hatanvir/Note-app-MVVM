@@ -1,7 +1,6 @@
-package com.tvr.noteappmvvm.features.model
+package com.tvr.noteappmvvm.features.model.Auth
 
 import android.content.Context
-import android.util.Log
 import com.tvr.noteappmvvm.common.RequestCompleteListener
 import com.tvr.noteappmvvm.features.model.Request.LoginRequest
 import com.tvr.noteappmvvm.features.model.Request.RegisterRequest
@@ -13,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
- class AuthModelImplementation(private val context: Context) :AuthModel{
+ class AuthModelImplementation(private val context: Context) : AuthModel {
 
     override fun registerInfo(registerReq: RegisterRequest, callback: RequestCompleteListener<ResponseBody>) {
         val apiInterface:ApiInterface = RetrofitClient.getClient().create(ApiInterface::class.java)

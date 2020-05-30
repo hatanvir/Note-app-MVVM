@@ -21,7 +21,7 @@ interface ApiInterface {
     fun login(@Body request: LoginRequest):Call<Login>
 
     @POST("api/addNote")
-    fun addNote():Call<AddNoteRequest>
+    fun addNote():Call<ResponseBody>
 
     @POST("api/updateNote/{id}")
     fun updateNote(@Path("id") id:Int?):Call<UpdateNoteRequest>
