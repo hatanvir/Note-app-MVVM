@@ -2,11 +2,11 @@ package com.tvr.noteappmvvm.features.model.Request
 
 import com.google.gson.annotations.SerializedName
 
-class UpdateNoteRequest {
+class UpdateNoteRequest(user_id:String,subject:String,description:String) {
     @SerializedName("user_id")
-    val user_id = "";
+    val user_id = user_id
     @SerializedName("subject")
-    val subject = "";
+    val subject = subject
     @SerializedName("description")
-    val description = "";
+    val description = description
 }

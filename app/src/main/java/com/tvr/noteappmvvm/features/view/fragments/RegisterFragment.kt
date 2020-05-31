@@ -65,7 +65,7 @@ class RegisterFragment : Fragment(),Validator.ValidationListener {
         val progressDialog = ProgressDialog(activity)
         progressDialog.setTitle("Please wait")
 
-        // initialize model. (I know we should not initialize model in View. But for simplicity...)
+        // initialize model
         model = AuthModelImplementation(
             requireActivity()
         )

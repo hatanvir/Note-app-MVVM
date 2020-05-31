@@ -20,18 +20,18 @@ interface ApiInterface {
     @POST("/api/login")
     fun login(@Body request: LoginRequest):Call<Login>
 
-    @POST("api/addNote")
-    fun addNote():Call<ResponseBody>
+    @POST("/api/addNote")
+    fun addNote(@Body request: AddNoteRequest):Call<ResponseBody>
 
-    @POST("api/updateNote/{id}")
-    fun updateNote(@Path("id") id:Int?):Call<UpdateNoteRequest>
+    @POST("/api/updateNote/{id}")
+    fun updateNote(@Path("id") id:Int?,@Body request: UpdateNoteRequest):Call<ResponseBody>
 
     @GET("/api/getNotesByUerId/{id}")
     fun getNotesById(@Path("id") id:Int?):Call<GetNotes>
 
-    @POST("api/deleteNote/{user_id}/{note_id}")
+    @POST("/api/deleteNote/{user_id}/{note_id}")
     fun deleteNote(
         @Path("user_id") user_id:Int?,
-        @Path("note_id") note_id:Int?)
+        @Path("note_id") note_id:Int?):Call<ResponseBody>
 
 }
