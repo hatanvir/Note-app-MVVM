@@ -23,4 +23,4 @@ This is a basic note tracking app. Created this project for practicing mvvm arch
   <img src=https://github.com/hatanvir/Note-app-MVVM/blob/master/Screenshot/Screenshot_2020-05-31-14-07-17-591_com.tvr.noteappmvvm.jpg alt="Notes" width="200" height="400">
 <img src=https://github.com/hatanvir/Note-app-MVVM/blob/master/Screenshot/Screenshot_2020-05-31-14-07-20-564_com.tvr.noteappmvvm.jpg alt="Notes" width="200" height="400">
 <img src=https://github.com/hatanvir/Note-app-MVVM/blob/master/Screenshot/Screenshot_2020-05-31-14-07-23-906_com.tvr.noteappmvvm.jpg alt="Notes" width="200" height="400">
-  <img src=https://github.com/hatanvir/Note-app-MVVM/blob/master/Screenshot/Screenshot_2020-05-31-14-07-27-575_com.tvr.noteappmvvm.jpg alt="Notes" width="200" height="400">></p>
+  <img src=https://github.com/hatanvir/Note-app-MVVM/blob/master/Screenshot/Screenshot_2020-05-31-14-07-27-575_com.tvr.noteappmvvm.jpg alt="Notes" width="200" height="400"></p>
