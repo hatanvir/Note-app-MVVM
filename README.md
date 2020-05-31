@@ -22,3 +22,6 @@ This is a basic note tracking app. Created this project for practicing mvvm arch
   <li>Laravel JWT authentication</li>
 </ul>
  
+## Contact
+<b>Email:</b> tanvirhasan553@gmail.com<br>
+<b>LinkedIn:</b> https://www.linkedin.com/in/tanvir-hasan-a97940117/
