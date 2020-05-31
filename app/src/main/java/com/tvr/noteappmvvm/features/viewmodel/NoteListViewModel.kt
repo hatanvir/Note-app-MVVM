@@ -16,12 +16,15 @@ class NoteListViewModel:ViewModel() {
 
     val addNoteSuccessLiveData = MutableLiveData<ResponseBody>()
     val addNoteFailedLiveData = MutableLiveData<String>()
+    val addNotePbLiveData = MutableLiveData<Boolean>()
 
     val updateNoteSuccessLiveData = MutableLiveData<ResponseBody>()
     val updateNoteFailedLiveData = MutableLiveData<String>()
+    val updateNotePbLiveData = MutableLiveData<Boolean>()
 
     val deleteNoteSuccessLiveData = MutableLiveData<ResponseBody>()
     val deleteNoteFailedLiveData = MutableLiveData<String>()
+    val deleteNotePbLiveData = MutableLiveData<Boolean>()
 
     fun getNoteList(id:Int,model: NoteCRUDModel){
         notesLoadingProgressBarLiveData.postValue(true)
@@ -40,37 +43,46 @@ class NoteListViewModel:ViewModel() {
     }
 
     fun addNote(request: AddNoteRequest,model: NoteCRUDModel){
+        addNotePbLiveData.postValue(true)
         model.addNote(request,object :RequestCompleteListener<ResponseBody>{
             override fun onRequestSuccess(data: ResponseBody) {
                addNoteSuccessLiveData.postValue(data)
+                addNotePbLiveData.postValue(false)
             }
 
             override fun onRequestFailed(errorMessage: String) {
                addNoteFailedLiveData.postValue(errorMessage)
+                addNotePbLiveData.postValue(false)
             }
 
         })
     }
     fun updateNote(id:Int,request: UpdateNoteRequest,model: NoteCRUDModel){
+        updateNotePbLiveData.postValue(true)
         model.updateNote(id,request,object :RequestCompleteListener<ResponseBody>{
             override fun onRequestSuccess(data: ResponseBody) {
                 updateNoteSuccessLiveData.postValue(data)
+                updateNotePbLiveData.postValue(false)
             }
 
             override fun onRequestFailed(errorMessage: String) {
                 updateNoteFailedLiveData.postValue(errorMessage)
+                updateNotePbLiveData.postValue(false)
             }
 
         })
     }
     fun deleteNote(user_id:Int,note_id:Int,model: NoteCRUDModel){
+        deleteNotePbLiveData.postValue(true)
         model.deleteNote(user_id,note_id,object :RequestCompleteListener<ResponseBody>{
             override fun onRequestSuccess(data: ResponseBody) {
                 deleteNoteSuccessLiveData.postValue(data)
+                deleteNotePbLiveData.postValue(false)
             }
 
             override fun onRequestFailed(errorMessage: String) {
                 deleteNoteFailedLiveData.postValue(errorMessage)
+                deleteNotePbLiveData.postValue(false)
             }
 
         })

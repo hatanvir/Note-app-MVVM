@@ -3,6 +3,7 @@ package com.tvr.noteappmvvm.features.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -38,6 +39,7 @@ class NoteDetailsActivity : AppCompatActivity() {
         }catch (e:Exception){}
 
         save_fab.setOnClickListener {
+
             if (id.length<=0){
                 viewModel.addNote(AddNoteRequest(Utils.getUserId(this),
                     subjectEt.text.toString(),descriptionEt.text.toString()),model)
@@ -48,15 +50,26 @@ class NoteDetailsActivity : AppCompatActivity() {
                 viewModel.addNoteFailedLiveData.observe(this, Observer { error->
                     Toast.makeText(this,"Failed to add note !"+error,Toast.LENGTH_SHORT).show()
                 })
+
+                viewModel.addNotePbLiveData.observe(this, Observer { isLoading->
+                    if (isLoading) noteStatusPb.visibility = View.VISIBLE
+                    else noteStatusPb.visibility = View.GONE
+                })
             }else{
                 viewModel.updateNote(id.toInt(), UpdateNoteRequest(Utils.getUserId(this),
                     subjectEt.text.toString(),descriptionEt.text.toString()),model)
 
                 viewModel.updateNoteSuccessLiveData.observe(this, Observer { data->
                     Toast.makeText(this,"Note updated",Toast.LENGTH_SHORT).show()
+                    finish()
                 })
                 viewModel.updateNoteFailedLiveData.observe(this, Observer { error->
                     Toast.makeText(this,"Failed to update note !",Toast.LENGTH_SHORT).show()
+                })
+
+                viewModel.addNotePbLiveData.observe(this, Observer { isLoading->
+                    if (isLoading) noteStatusPb.visibility = View.VISIBLE
+                    else noteStatusPb.visibility = View.GONE
                 })
             }
         }

@@ -96,7 +96,6 @@ class LoginFragment() : Fragment(),Validator.ValidationListener{
             passwordLoginEt.text.toString()
         ),model)
         viewModel.loginSuccessLiveData.observe(this, Observer { data->
-            Toast.makeText(activity,data.token.email,Toast.LENGTH_SHORT).show()
             val hashSet:HashSet<String> = HashSet()
             hashSet.add(data.token.id.toString())
             hashSet.add(data.token.name)

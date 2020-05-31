@@ -2,17 +2,16 @@ package com.tvr.noteappmvvm.features.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
-
 import com.tvr.noteappmvvm.R
 import com.tvr.noteappmvvm.Utils
 import com.tvr.noteappmvvm.features.adapters.NoteListRecyclerViewAdapter
@@ -21,7 +20,9 @@ import com.tvr.noteappmvvm.features.model.Home.NoteCRUDModelImpl
 import com.tvr.noteappmvvm.features.model.noteData
 import com.tvr.noteappmvvm.features.view.NoteDetailsActivity
 import com.tvr.noteappmvvm.features.viewmodel.NoteListViewModel
+import kotlinx.android.synthetic.main.fragment_note_list.*
 import kotlinx.android.synthetic.main.fragment_note_list.view.*
+import java.util.*
 import kotlin.collections.ArrayList
 
 class NoteListFragment : Fragment() {
@@ -48,6 +49,10 @@ class NoteListFragment : Fragment() {
         colorList.add("#c77de7")
         colorList.add("#9029F6")
 
+        viewModel.notesLoadingProgressBarLiveData.observe(this, Observer {isLoading->
+            if (isLoading) noteLoadingPb.visibility = View.VISIBLE
+            else noteLoadingPb.visibility = View.GONE
+        })
         v.fab.setOnClickListener {
             startActivity(Intent(activity,NoteDetailsActivity::class.java))
         }
@@ -61,7 +66,7 @@ class NoteListFragment : Fragment() {
 
     private fun getNotes() {
 
-        //Toast.makeText(activity!!,arrayList.size.toString(),Toast.LENGTH_SHORT).show()
+        arrayList.clear()
         noteRv.layoutManager = LinearLayoutManager(activity)
         val id = Utils.getUserId(activity!!)
         if (id!=null){
@@ -72,7 +77,9 @@ class NoteListFragment : Fragment() {
                     arrayList.add(noteData(note.id!!,note.subject!!,note.description!!,note.createdAt!!,note.updatedAt!!,
                         colorList.random()))
                 }
-                arrayList.sortWith(compareBy({it.updated_at}))//soting arraylist by updated note
+                Collections.sort(arrayList,
+                    Comparator<noteData> { a, b -> a.subject.compareTo(b.subject) })
+
                 val adapter:NoteListRecyclerViewAdapter = NoteListRecyclerViewAdapter(activity!!,arrayList)
                 noteRv.adapter = adapter
             })

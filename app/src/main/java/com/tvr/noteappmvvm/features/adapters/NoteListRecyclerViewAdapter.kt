@@ -19,6 +19,7 @@ import com.tvr.noteappmvvm.features.model.Home.NoteCRUDModelImpl
 import com.tvr.noteappmvvm.features.model.noteData
 import com.tvr.noteappmvvm.features.view.NoteDetailsActivity
 import com.tvr.noteappmvvm.features.viewmodel.NoteListViewModel
+import kotlinx.android.synthetic.main.activity_note_details.*
 import kotlinx.android.synthetic.main.dialog_option_bottomsheet.*
 import kotlinx.android.synthetic.main.note_recyclerview_shape.view.*
 import java.lang.Exception
